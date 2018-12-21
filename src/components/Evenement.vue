@@ -13,14 +13,37 @@
 
 <script>
 export default {
-    props: ['jour','horaire', 'numJour'],
+    props: ['idEvent'],
     mounted: function() {
+        this.getEvenementsData(this.idEvent);
         this.$data.startElement = (((this.horaire)*4)+this.$data.quartDheureDebut);
         this.$data.endElement = ((((this.horaire)*4)+this.$data.quartDheureDebut) + this.$data.duree);
         
         this.positionElement(this.$data.startElement);
     },
     methods: {
+        getEvenementsData: function(id) {
+            let self = this;
+            this.axios.get("http://localhost:80/edt/getEvenementsData.php", {
+                params: {
+                    id: id
+                }
+            })
+            .then(function(response, vueElem) {
+                var evt = response.data.event[0];
+                console.log(evt);
+                self.$data.heureDebut = evt.heureDebut;
+                self.$data.quartDheureDebut = evt.quartDheureDebut;
+                self.$data.heureFin = evt.heureFin;
+                self.$data.quartDheureFin = evt.quartDheureFin;
+                self.$data.nomProfesseur = evt.nomProf;
+                self.$data.intituleCours = evt.nomCours;
+                self.$data.nomSalle = evt.Salle;
+
+            }).catch(function(error) {
+            console.log(error);
+            });
+        },
         positionElement: function(elem) {
             var referenceNode = document.getElementById(this.jour+elem);
             this.$el.style['grid-column'] = this.numJour + " / " + this.numJour;
@@ -29,7 +52,7 @@ export default {
             this.removeElements();
         },
         removeElements: function() {
-            for(var i = this.$data.startElement; i < this.$data.endElement; i++) {
+            for(var i = this.$data.startElement; i <= this.$data.endElement; i++) {
                 document.getElementById(this.jour+i).remove();
             }
         }
@@ -38,10 +61,10 @@ export default {
         return {
             heureDebut: 14,
             quartDheureDebut: 3,
-            duree: 12,
+            duree: 6,
             typeCours: "EXAMEN",
             intituleCours: "BADA",
-            nomProfesseur: "CODDJDJURTAUD",
+            nomProfesseur: "COURTAUD",
             nomSalle: "IBGBI 1-108",
             startElement: null,
             endElement: null
@@ -53,7 +76,7 @@ export default {
 <style>
 .agenda-jour .evenement {
     background-color:white;
-    height:calc((100vh - 80px) / (42/10));
+    height:calc((100vh - 80px) / (42/6));
     border-radius: 5%;
     border: 0px 0px 1px 1px solid grey;
 }
