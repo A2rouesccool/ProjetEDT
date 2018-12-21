@@ -1,11 +1,11 @@
 <template>
     <div class="agenda-container">
-        <JourElement jour="Lundi" numJour="1"/></JourElement>
-        <JourElement jour="Mardi" numJour="2"/></JourElement>
-        <JourElement jour="Mercredi" numJour="3"/></JourElement>
-        <JourElement jour="Jeudi" numJour="4"/></JourElement>
-        <JourElement jour="Vendredi" numJour="5"/></JourElement>
-        <JourElement jour="Samedi" numJour="6"/></JourElement>
+        <JourElement jour="Lundi" numJour="1"></JourElement>
+        <JourElement jour="Mardi" numJour="2"></JourElement>
+        <JourElement jour="Mercredi" numJour="3"></JourElement>
+        <JourElement jour="Jeudi" numJour="4"></JourElement>
+        <JourElement jour="Vendredi" numJour="5"></JourElement>
+        <JourElement jour="Samedi" numJour="6"></JourElement>
     </div>
 </template>
 
