@@ -13,6 +13,8 @@
     "@types/jquery": "^3.3.9",
     "ajv": "^6.5.3",
     "axios": "^0.18.0",
+    "bootstrap-modal": "^2.2.4",
+    "bootstrap-select": "^1.13.5",
     "git": "^0.1.5",
     "jquery": "^3.3.1",
     "mysql": "^2.16.0",

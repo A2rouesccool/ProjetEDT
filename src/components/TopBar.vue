@@ -3,9 +3,9 @@
         <div class="container-fluid">
             <div class="col-md-3 align-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <!--<a class="navbar-brand" href="#">
                         <img alt="Brand" src="../assets/logo.jpeg">
-                    </a>
+                    </a>-->
                 </div>
             </div>
             <div class="col-md-6 align-center">
@@ -38,19 +38,21 @@
     border-bottom:.5px solid grey;
 }
 .navbar-brand img {
-    height: 50px;
+    height: 45px;
     float: left;
-    padding-top: 12px;
+    padding-top: 5px
 }
 .navbar .btn {
-    margin-top:15px;
+    margin-top:8px;
     width:55px;
 }
 .navbar .btn-left {
     border-radius: 0.25rem 0 0 0.25rem;
+    float: right;
 }
 .navbar .btn-right {
     border-radius: 0 0.25rem 0.25rem 0;
+    float: left;
 }
 .navbar .col {
     padding-left: 0;
@@ -74,7 +76,7 @@
 
 #week-picker {
     margin: auto;
-    margin-top:15px;
+    margin-top:8px;
 }
 
 </style>

@@ -2,13 +2,13 @@
     <div class="evenement">
         <div class="evenement-header">
             <span>{{ typeCours }} | {{ heureDebut }}h{{ quartDheureDebut*15 }} - {{ heureFin }}h{{ quartDheureFin*15 }}</span>
-        </div>
-        <div class="evenement-body">
+            <div class="evenement-body">
             <div class="evenement-center">
                 <p class="matiere"><b>{{ intituleCours }}</b></p>
                 <p class="professeur">{{ nomProfesseur }}</p>
                 <p class="lieu">{{ nomSalle }}</p>
             </div>
+        </div>
         </div>
     </div>
 </template>
@@ -55,10 +55,11 @@ export default {
             var elemBody = this.$el.getElementsByClassName("evenement-body")[0];
             var elemHeader = this.$el.getElementsByClassName("evenement-header")[0];
             var referenceNode = document.getElementById(this.$data.jour+elem);
-            this.$el.style['grid-column'] = this.numJour + " / " + this.numJour;
-            this.$el.style['grid-row'] = this.$data.startElement + " / " + this.$data.endElement;
-            this.$el.style['height'] = "calc((100vh - 80px) / (42/" + this.$data.duree + "))";
-            elemBody.style['height'] = "calc(((100vh - 80px) / (42/" + this.$data.duree + ")) - 25px)";
+            this.$el.style['grid-row'] = this.numJour + " / " + this.numJour;
+            this.$el.style['grid-column'] = this.$data.startElement + " / " + this.$data.endElement;
+            elemHeader.style['width'] = "calc((100vw - 100px) / (42/" + this.$data.duree +"))";
+            //this.$el.style['height'] = "calc((100vh - 80px) / (42/" + this.$data.duree + "))";
+            //elemBody.style['width'] = "calc(((100vw - 80px) / (42/" + this.$data.duree + ")))";
             elemHeader.classList += " " + this.$data.typeCours.toLowerCase() + "-color";
             referenceNode.parentNode.insertBefore(this.$el, referenceNode.nextSibling);
             this.removeElements();
@@ -118,15 +119,19 @@ export default {
 <style>
 .agenda-jour .evenement {
     background-color:white;
-    height:calc((100vh - 80px) / (42/6));
     border-radius: 5%;
     border: 0px 0px 1px 1px solid grey;
+    height:calc((100vh - 80px) / 6);
+    display: contents;
 }
 
 .evenement-header {
     height:25px;
-    text-align: center;
-    font-size: 1.5rem;
+    text-align:center;
+}
+
+.evenement-header span {
+    margin: auto;
     line-height: 25px;
 }
 

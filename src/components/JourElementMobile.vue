@@ -2,21 +2,21 @@
     <div class="agenda-jour" v-bind:id="'jour'+this.jour">
         <div class="intitule-jour">{{ this.jour }}</div>
         <div v-for="event in eventID">
-            <Evenement :idEvent="event['id']"/>
+            <EvenementMobile :idEvent="event['id']"/>
         </div>
     </div>
 </template>
 
 <script>
-import Evenement from './Evenement'
+import EvenementMobile from './EvenementMobile'
 
 export default {
     props: ['jour', 'numJour'],
     components: {
-        Evenement
+        EvenementMobile
     },
     mounted: function() {
-        this.initializeRows();
+        this.initializeCols();
         this.getEvenements(this.numJour);
     },
     methods: {
@@ -33,16 +33,16 @@ export default {
             console.log(error);
             });
         },
-        initializeRows: function() {
+        initializeCols: function() {
             var id = "jour"+this.jour;
             var jourElement = document.getElementById(id);
             for(var i = 0; i < 42; i++) {
-                var row = document.createElement("div");
-                row.className = "row-element";
-                row.style['grid-column'] = this.numJour;
-                row.style['grid-row'] = "1 / "+i;
-                row.id = this.jour+i;
-                jourElement.appendChild(row);
+                var col = document.createElement("div");
+                col.className = "col-element";
+                /*col.style['grid-column'] = i+" / "+i;
+                col.style['grid-row'] = this.numJour + " / " +this.numJour;*/
+                col.id = this.jour+i;
+                jourElement.appendChild(col);
             }
         }
     },
@@ -59,13 +59,20 @@ export default {
   grid-column: 1;
   grid-row: 1;
   height:25px;
+  width: 100px;
   margin: auto;
   font-size: 1vw;
+  text-align: center !important;
 }
 
-.agenda-jour .row-element {
+.agenda-jour .col-element {
     border-bottom: 0.1px solid grey;
-    height:calc((100vh - 80px) / 42);
+    height:calc((100vh - 80px) / 6);
+    width: calc((100vw - 100px) / 43);
+}
+
+.agenda-jour {
+    height:calc((100vh - 80px) / 6);
 }
 
 </style>
