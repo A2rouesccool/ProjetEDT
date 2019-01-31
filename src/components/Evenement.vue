@@ -41,8 +41,6 @@ export default {
                 self.$data.startElement = ((((parseInt(self.$data.heureDebut))-8)*4)+parseInt(self.$data.quartDheureDebut)).toString();
                 self.$data.endElement = (((((parseInt(self.$data.heureFin))-8)*4)+parseInt(self.$data.quartDheureFin))).toString();
                 self.$data.duree = self.$data.endElement - self.$data.startElement;
-                console.log(self.$data.startElement);
-                console.log(self.$data.endElement);
                 self.setJour();
                 self.positionElement();
 
